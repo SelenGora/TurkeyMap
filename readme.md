@@ -4,7 +4,7 @@
 
 TODO:
 - Tooltips can be add
-- Mobile device support will be search
+- Mobile device support will be research
 
 
 
