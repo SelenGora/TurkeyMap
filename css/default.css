@@ -1,0 +1,37 @@
+#map {
+	float:left;
+	clear:both;
+	width:1200px;
+	height:820px;
+}
+ 
+.point {
+	position:absolute;
+	display:none;
+	padding:10px 15px;
+	background:#7BB9F0;
+	font-size:14px;
+	font-weight:bold;
+	
+	/* CSS3 rounded corners */
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+}
+ 
+.point .close {
+	display:block;
+	position:absolute;
+	top:-10px;
+	right:-10px;
+	width:24px;
+	height:24px;
+	text-indent:-9999px;
+	outline:none;
+	background:url(../img/close.png) no-repeat;
+}
+ 
+.point img {
+	vertical-align:middle;
+	margin-right:10px;
+}
