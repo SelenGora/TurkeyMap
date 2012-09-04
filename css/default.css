@@ -1,5 +1,54 @@
-#map {
-	width:auto;
-	height:650px;	
+/* Demo page style begin*/
+body { 
+	background:#f3f3f3;
+	font:12px/18px 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif; line-height: 1.5em;
+	font-family:Calibri;
+	color:#47443f;
+	line-height: 1.5em;
 }
- 
+h1,p	{ 
+	text-align: center;
+	font-weight: normal;
+}
+/* Demo page style ends*/
+#map {
+	clear:both;
+	width:1100px;
+	height:620px;
+	margin:0 auto;
+	position:relative;
+	top:-100px; /* SVG image is starting with 130px top value so i used top:-100px  */	
+}
+
+/*Tooltip*/
+.point {
+position:absolute;
+display:none;
+padding:10px 15px;
+background:#7BB9F0;
+font-size:14px;
+font-weight:bold;
+-moz-border-radius:8px;
+}
+
+.point .close {
+display:block;
+position:absolute;
+top:-10px;
+right:-10px;
+width:24px;
+height:24px;
+text-indent:-9999px;
+outline:none;
+background:url(../img/close.png) no-repeat;
+}
+
+.point img {
+vertical-align:middle;
+margin-right:10px;
+}
+
+a img {
+border:none;
+}
+
