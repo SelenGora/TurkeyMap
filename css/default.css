@@ -6,43 +6,63 @@ body {
 	color:#47443f;
 	line-height: 1.5em;
 }
+a   {
+	color:#1669AD;
+}
 h1,p	{ 
 	text-align: center;
 	font-weight: normal;
 }
 /* Demo page style ends*/
+.container{
+	position:relative; /*for tooltip positions*/
+	width:1050px;
+	height:auto;
+	margin:0 auto;
+}
 #map {
 	clear:both;
 	width:1050px;
 	height:620px;
-	margin:0 auto;
 	position:relative;
 	top:-100px; /* SVG image is starting with 130px top value so i used top:-100px  */	
 }
 
 /*Tooltip*/
 .point {
-position:absolute;
-display:none;
-padding:10px 15px;
-background:#7BB9F0;
-font-size:14px;
-font-weight:bold;
--moz-border-radius:8px;
+position: absolute;
+display: none;
+background: white;
+border: 1px solid #666;
+padding: 10px 15px;
+font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+text-transform: uppercase;
+margin-top: -125px;
+margin-left: 25px;
 }
-
-.point .close {
+.triangle{
+display: block;
+background: url(../images/triangle-down.png) no-repeat;
+width: 24px;
+height: 12px;
+position: absolute;
+bottom: -12px;
+left: 40%;
+}
+/*.point .close {
 display:block;
 position:absolute;
-top:-10px;
-right:-10px;
+top:-5px;
+right:-5px;
 width:24px;
 height:24px;
 text-indent:-9999px;
 outline:none;
-background:url(../img/close.png) no-repeat;
+background:url(../images/close.png) no-repeat;
 }
-
+*/
 .point img {
 vertical-align:middle;
 margin-right:10px;
