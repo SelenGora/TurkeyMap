@@ -13,6 +13,6 @@ TODO:
 
 - jquery interactive Turkey Map, still in progress. Thanks..
 
-# Change Log - v1.1 2012/09/05
+# Change Log - v0.5 2012/09/05
 
 - Tooltip added (Just names showing for now)
