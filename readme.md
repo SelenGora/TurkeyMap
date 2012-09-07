@@ -6,6 +6,7 @@ TODO:
 - Tooltips can be add [Added]
 - City pictures will be add 
 - Tooltips doesn't hide itself when mouseout to map, should be fix.
+- Active region option
 - Mobile device support will be research
 
 
