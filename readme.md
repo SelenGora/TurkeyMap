@@ -8,6 +8,12 @@ TODO:
 - Tooltips doesn't hide itself when mouseout to map, should be fix.
 - Active region option
 - Mobile device support will be research
+- Performance test
+
+SUGGESTION:
+- Search box option (When type city/region name in search box, city/region shows up)
+- Responsive option (needs to improve SVG knowledge)
+- Clickable version
 
 
 [See demo](http://selengora.com/test/harita)
