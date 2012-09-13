@@ -19,7 +19,7 @@ SUGGESTION:
 # Browser Support
 - Browser compatibility test is not completed, some bugs will be all major browsers and ofcourse IE:)
 
-# Change Log - v0.5 2012/09/05
+# Change Log - v0.5 2012/09/13
 
 - Tooltip added (Just names showing for now)
 - Active region option added
