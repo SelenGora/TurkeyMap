@@ -34,48 +34,13 @@ h1,p	{
 	position:relative;
 	top:-100px; /* SVG image is starting with 130px top value so i used top:-100px  */	
 }
-
-/*Tooltip*/
-.point {
-position: absolute;
-display: none;
-background: white;
-border: 1px solid #666;
-padding: 10px 15px;
-font-weight: bold;
--moz-border-radius: 8px;
--webkit-border-radius: 8px;
-text-transform: uppercase;
-margin-top: -125px;
-margin-left: 25px;
-}
-.triangle{
-display: block;
-background: url(../images/triangle-down.png) no-repeat;
-width: 24px;
-height: 12px;
-position: absolute;
-bottom: -12px;
-left: 40%;
-}
-/*.point .close {
-display:block;
-position:absolute;
-top:-5px;
-right:-5px;
-width:24px;
-height:24px;
-text-indent:-9999px;
-outline:none;
-background:url(../images/close.png) no-repeat;
-}
-*/
-.point img {
-vertical-align:middle;
-margin-right:10px;
+#map svg {
+	position: relative;
+	top: 0px; 
+	left: 0px;
 }
 
-a img {
-border:none;
+svg > a {
+	cursor: pointer;
+	display:block;
 }
-

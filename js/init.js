@@ -7,67 +7,184 @@
   Document   : Interactive Turkey Map with RaphaelJS
   Edited by Selen GORA <http://selengora.com - me@selengora.com>
 */
+
+	var iscountyselected = false;
+	var previouscountyselected = "balikesir";
+	var start = true;
+	var past = null;
+
 $(function(){
 	
 	var r = Raphael('map'),
 	attributes = {
             fill: '#e0e0e0',
-            stroke: '#333',
+            stroke: '#999',
             'stroke-width': 0,
-            'stroke-linejoin': 'round'
+            'stroke-linejoin': 'round',
         },
 	arr = new Array();
 	
-	for (var country in paths) {
+	for (var county in paths) {
 		
-		var obj = r.path(paths[country].path);
+		var obj = r.path(paths[county].path);
 		
 		obj.attr(attributes);
 		
-		arr[obj.id] = country;
+		arr[obj.id] = county;
+			
+		if(arr[obj.id] == 'blank')
+			obj.attr(attributes).attr( { fill: "#000" } ); /* set lake colour */
+					
+		if(arr[obj.id] != 'blank') /* prevent change of lake colour and mouse click */
+		{				
+			obj.data('selected', 'notSelected');
 		
-		obj
-		.hover(function(){
-			this.animate({
-				fill: '#1669AD'
-			}, 300);
-		}, function(){
-			this.animate({
-				fill: attributes.fill
-			}, 300);
-		})
-		.mouseover(function(){
-			document.location.hash = arr[this.id];
+			/* add ID to paths */
+			obj.node.id = arr[obj.id];
 			
-			var point = this.getBBox(0);
+			/* add title (for qtip) to paths */
+			obj.attr(attributes).attr( { title: paths[arr[obj.id]].name } );
 			
-			$('#map').next('.point').remove();
-			
-			$('#map').after($('<div />').addClass('point'));
-			
-			$('.point')
-			.html(paths[arr[this.id]].name)
-						.prepend($('<a />').attr('href', '#').addClass('triangle'))
-			//.prepend($('<a />').attr('href', '#').addClass('close').text('Close'))
-			//.prepend($('<img />').attr('src', 'flags/'+arr[this.id]+'.png'))
-			.css({
-				left: point.x+(point.width/2)-80,
-				top: point.y+(point.height/2)-20
-			})
-			.fadeIn();
-			
-		});
-		
-		$('.point').find('.close').live('click', function(){
-			var t = $(this),
-				parent = t.parent('.point');
-			
-			parent.fadeOut(function(){
-				parent.remove();
+			/* county - mouse in */
+			obj
+			.hover(function(){ 
+				if(paths[arr[this.id]].value == 'notSelected')
+					{
+					/*this.animate({
+						fill: '#32CD32'
+					}, 300);*/
+				}
+				$('#coatOfArms').addClass(arr[this.id]+'large sprite-largecrests');
+				
+				$('#countyInfo').text(paths[arr[this.id]].name);
+				
+				$('#searchResults').stop(true,true);
+				
+							
+			/* county - mouse out */	
+			}, function(){ 
+				if(paths[arr[this.id]].value == 'notSelected')
+					{
+					/*this.animate({
+						fill: attributes.fill
+					}, 300);*/
+				}
+				/*clearTimeout($(this).data('timeout'));*/
+							
+				$('#coatOfArms').removeClass();			
+				/* if county event is not on a selected county fade out */
+				if(paths[arr[this.id]].value == 'notSelected')
+					{
+					$('.'+paths[arr[this.id]].name)
+							.slideUp('slow', function() { 
+								$(this).remove(); 
+							});
+				}
 			});
-			return false;
-		});
-		
-	}
+			/* add tool tip to map */ 	
+			$("svg a").qtip({
+					content: {
+						attr: 'title'
+					},
+					show: 'click',
+					hide: 'mouseout',
+					position: {
+						target: 'mouse'
+					},
+					style: {
+						classes: 'ui-tooltip-tipsy ui-tooltip-shadow',
+						tip: true
+					}
+			});/* end tool tip to map */
 			
+			/* add crests to bottom and set county selections */
+			obj.click(function(){
+				if(paths[arr[this.id]].value == 'notSelected')
+				{
+						this.animate({
+						fill: '#999'
+					}, 200);
+			
+					paths[previouscountyselected].value = "notSelected";
+					paths[arr[this.id]].value = "isSelected";
+					
+					//$('#test').append(' and after it is '+paths[previouscountyselected].value);
+					//alert(arr[this.id] + previouscountyselected);
+					previouscountyselected = paths[arr[this.id]].name;
+					//$('#test').append(' the current county is now '+previouscountyselected);
+					
+					/* handle small crest */
+					$('<div/>', {
+							title: arr[this.id],
+							'class': arr[this.id]+'small sprite-smallcrests'
+						}).appendTo('#selectedCounties').qtip(countyCrest);
+						
+					/* change select drop menu */							
+					$("#countymenu").val(paths[arr[this.id]].county); 
+					
+					
+						
+					if (!start && past != this)
+					{
+						past.animate({ fill: '#e0e0e0'	}, 200);
+					}
+					past = this;
+					start = false;					
+				}
+	
+					
+				else if(paths[arr[this.id]].value == 'isSelected')
+					{
+						this.animate({
+							fill: '#999'
+						}, 200);
+						
+						paths[arr[this.id]].value = "notSelected"; /* set path value */	
+						
+						/* remove small crest */
+						$("." + previouscountyselected+'small').remove();
+						
+					}	
+				
+				});/* end mark selections */
+
+			/* required for qtip crests at bottom */
+			var countyCrest = 	{
+					content: {
+						attr: 'title'
+					},
+					position: {
+						target: 'mouse'
+					},
+					style: {
+						classes: 'ui-tooltip-tipsy ui-tooltip-shadow',
+						tip: false
+					}
+			};/* end for qtip crests to bottom */
+			
+			/* county hover bump */
+			function hoverin(e){
+				if(paths[arr[this.id]].value == 'notSelected')
+					this.animate({
+						fill: '#1669AD'}, 300);
+			}
+
+			function hoverout(e){
+				if(paths[arr[this.id]].value == 'notSelected')
+					this.animate({
+						fill: '#e0e0e0'}, 300);
+			}
+
+			obj.mouseout(hoverout);
+				
+			obj.mouseover(hoverin);
+			/* end county hover bump */
+			
+			/* hide name div - !important do not delete - ajax uses contents for event search */
+			$('#countyInfo').hide();
+			
+			$('#spinner').hide();
+		}/* end check on balikesir */
+		
+	} /* end raphael loop */				
 });
