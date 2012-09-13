@@ -3,10 +3,6 @@
 Uses RafaelJs plugin 
 
 TODO:
-- Tooltips can be add [Added]
-- City pictures will be add 
-- Tooltips doesn't hide itself when mouseout to map, should be fix.
-- Active region option
 - Mobile device support will be research
 - Performance test
 
@@ -26,3 +22,5 @@ SUGGESTION:
 # Change Log - v0.5 2012/09/05
 
 - Tooltip added (Just names showing for now)
+- Active region option added
+- Tooltip bug solved
