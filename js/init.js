@@ -9,7 +9,7 @@
 */
 
 	var iscountyselected = false;
-	var previouscountyselected = "balikesir";
+	var previouscountyselected = "blank";
 	var start = true;
 	var past = null;
 
@@ -32,12 +32,16 @@ $(function(){
 		
 		arr[obj.id] = county;
 			
-		if(arr[obj.id] == 'blank')
-			obj.attr(attributes).attr( { fill: "#000" } ); /* set lake colour */
-					
-		if(arr[obj.id] != 'blank') /* prevent change of lake colour and mouse click */
+//		if(arr[county] == 'blank')
+//			obj.attr(attributes).attr( { fill: "#000" } ); /* set blank colour */
+
+			
+							
+		if(arr[obj.id] != 'blank') /* prevent change of blank colour and mouse click */
 		{				
 			obj.data('selected', 'notSelected');
+			
+		
 		
 			/* add ID to paths */
 			obj.node.id = arr[obj.id];
@@ -45,6 +49,8 @@ $(function(){
 			/* add title (for qtip) to paths */
 			obj.attr(attributes).attr( { title: paths[arr[obj.id]].name } );
 			
+
+
 			/* county - mouse in */
 			obj
 			.hover(function(){ 
@@ -70,6 +76,8 @@ $(function(){
 					}, 300);*/
 				}
 				/*clearTimeout($(this).data('timeout'));*/
+				
+				
 							
 				$('#coatOfArms').removeClass();			
 				/* if county event is not on a selected county fade out */
@@ -162,6 +170,9 @@ $(function(){
 					}
 			};/* end for qtip crests to bottom */
 			
+			
+
+			
 			/* county hover bump */
 			function hoverin(e){
 				if(paths[arr[this.id]].value == 'notSelected')
@@ -184,7 +195,7 @@ $(function(){
 			$('#countyInfo').hide();
 			
 			$('#spinner').hide();
-		}/* end check on balikesir */
+		}/* end check on blank */
 		
 	} /* end raphael loop */				
 });
