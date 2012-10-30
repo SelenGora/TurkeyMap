@@ -1,6 +1,6 @@
 # Interactive Turkey Map
 
-Uses RafaelJs plugin **(implemented simple & dirty modalbox by tanerdogan) [See dome with modalbox](http://tanerdogan.com/github/map/) **
+Uses RafaelJs plugin **(implemented simple & dirty modalbox by tanerdogan) [See DEMO with modalbox](http://tanerdogan.com/github/map/) **
 
 
 TODO:
