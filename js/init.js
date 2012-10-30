@@ -6,14 +6,25 @@
   ***
   Document   : Interactive Turkey Map with RaphaelJS
   Edited by Selen GORA <http://selengora.com - me@selengora.com>
+
+  ***
+   
+  @title: Added modalbox
+  @description: change list;
+				added simple modalbox written by me
+				changed qtip position "mouse" to "leave" coz on "click" event doesnt work properly
+				added new variable "content_dir" for $.get requests
+				added ajax req. on obj.click function
+  @author: Taner DOGAN <http://tanerdogan.com - hello@tanerdogan.com>
 */
 
 	var iscountyselected = false;
 	var previouscountyselected = "blank";
 	var start = true;
 	var past = null;
-
-$(function(){
+	var content_dir = "details";
+	
+	$(function(){
 	
 	var r = Raphael('map'),
 	attributes = {
@@ -91,22 +102,39 @@ $(function(){
 			});
 			/* add tool tip to map */ 	
 			$("svg a").qtip({
+			
 					content: {
+						//attr: 'title'
 						attr: 'title'
 					},
-					show: 'click',
+					show: 'mouseover',
 					hide: 'mouseout',
 					position: {
-						target: 'mouse'
+						target: 'leave'
 					},
 					style: {
 						classes: 'ui-tooltip-tipsy ui-tooltip-shadow',
-						tip: true
+						tip: false
 					}
 			});/* end tool tip to map */
 			
 			/* add crests to bottom and set county selections */
-			obj.click(function(){
+			obj.click(function(){	
+
+			/* @author: Taner DOGAN //START */			
+			$("#detail").click();
+			$.get(content_dir+"/"+arr[this.id]+".html", function (html){							
+				$("#detail").empty().fadeIn(700).append(html).css("display", "block");				
+				$("#detail").css({
+					"position": "absolute",
+					"top": ((($("#detail").parent().height() +100 -  $("#detail").height()) / 2) + "px")
+				});
+			}).error(function() { 
+				warn = "<a href='#' class='kapat'>Kapat</a><h2><center>Bu bölgede kayıt bulunamadı</center></h2>";
+				$("#detail").empty().fadeIn(700).append(warn).css("display", "block");	
+			});
+			/* @author: Taner DOGAN //END */
+			
 				if(paths[arr[this.id]].value == 'notSelected')
 				{
 						this.animate({
@@ -152,6 +180,7 @@ $(function(){
 						/* remove small crest */
 						$("." + previouscountyselected+'small').remove();
 						
+						
 					}	
 				
 				});/* end mark selections */
@@ -166,7 +195,7 @@ $(function(){
 					},
 					style: {
 						classes: 'ui-tooltip-tipsy ui-tooltip-shadow',
-						tip: false
+						tip: true
 					}
 			};/* end for qtip crests to bottom */
 			
@@ -177,10 +206,10 @@ $(function(){
 			function hoverin(e){
 				if(paths[arr[this.id]].value == 'notSelected')
 					this.animate({
-						fill: '#1669AD'}, 300);
+						fill: '#1669AD'}, 300);						
 			}
 
-			function hoverout(e){
+			function hoverout(e){			
 				if(paths[arr[this.id]].value == 'notSelected')
 					this.animate({
 						fill: '#e0e0e0'}, 300);
@@ -195,6 +224,11 @@ $(function(){
 			$('#countyInfo').hide();
 			
 			$('#spinner').hide();
+			/* @author: Taner DOGAN //START */	
+			$(".kapat").live("click", function(){
+				$("#detail").css("display", "none").empty();					
+			});
+			/* @author: Taner DOGAN //END */	
 		}/* end check on blank */
 		
 	} /* end raphael loop */				
