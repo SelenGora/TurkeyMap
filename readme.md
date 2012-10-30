@@ -1,6 +1,7 @@
 # Interactive Turkey Map
 
-Uses RafaelJs plugin 
+Uses RafaelJs plugin **(implemented simple & dirty modalbox by tanerdogan) [See dome with modalbox](http://tanerdogan.com/github/map/) **
+
 
 TODO:
 - Mobile device support will be research
@@ -13,6 +14,8 @@ SUGGESTION:
 
 
 [See demo](http://selengora.com/test/harita)
+
+
 
 **jquery interactive Turkey Map, still in progress. Thanks..
 
