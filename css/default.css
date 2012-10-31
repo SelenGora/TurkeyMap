@@ -4,6 +4,12 @@
     Created on : 30.Aug.2012, 13:23:13
     Author     : Selen GORA <goraselen@gmail.com - me@selengora.com>
     Web        : selengora.com
+	
+	-------------------------
+	
+	Author: Taner DOGAN <http://tanerdogan.com - hello@tanerdogan.com>
+	Change Log: Added #detail
+	
 */
 /* Demo page style begin*/
 body { 
@@ -26,6 +32,18 @@ h1,p	{
 	width:1050px;
 	height:auto;
 	margin:0 auto;
+}
+
+#detail{
+	display:none;
+	position:absolute; /*for tooltip positions*/
+	width:1050px;
+	height:auto;
+	margin:0 auto;
+	background: #fff;
+	border-top:1px solid #1669AD;
+	border-bottom:3px solid #1669AD;
+	z-index:999;
 }
 #map {
 	clear:both;
