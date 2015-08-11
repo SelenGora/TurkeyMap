@@ -12,53 +12,215 @@
 	
 */
 /* Demo page style begin*/
-body { 
+body {
 	background:#f3f3f3;
-	font:12px/18px 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif; line-height: 1.5em;
+	font:12px/18px 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
 	font-family:Calibri;
 	color:#47443f;
 	line-height: 1.5em;
 }
-a   {
+a {
 	color:#1669AD;
 }
-h1,p	{ 
+h1, p {
 	text-align: center;
 	font-weight: normal;
 }
+.c{clear:both;}
 /* Demo page style ends*/
-.container{
+.container {
 	position:relative; /*for tooltip positions*/
 	width:1050px;
 	height:auto;
 	margin:0 auto;
 }
-
-#detail{
+#detail {
 	display:none;
 	position:absolute; /*for tooltip positions*/
-	width:1050px;
+	width:560px;
 	height:auto;
 	margin:0 auto;
+	left:0;
+	right:0;
+	top:250px;
 	background: #fff;
-	border-top:1px solid #1669AD;
-	border-bottom:3px solid #1669AD;
 	z-index:999;
+	border:2px solid #252d35;
+}
+.close {
+	display:block;
+	width:24px;
+	height:24px;
+	background: url(../images/close.png) no-repeat;
+	position:absolute;
+	right:-2px;
+	top:0;
+	z-index:3;
+	
 }
 #map {
 	clear:both;
 	width:1050px;
 	height:620px;
 	position:relative;
-	top:-100px; /* SVG image is starting with 130px top value so i used top:-100px  */	
+	top:-100px; /* SVG image is starting with 130px top value so i used top:-100px  */
 }
 #map svg {
 	position: relative;
-	top: 0px; 
+	top: 0px;
 	left: 0px;
 }
-
 svg > a {
 	cursor: pointer;
 	display:block;
+}
+/*Tipsy*/
+.tipsy {
+	font-size: 10px;
+	position: absolute;
+	padding: 5px;
+	z-index: 100000;
+	margin-left:0%;
+	text-transform:capitalize;
+	font-size:1.3em
+}
+.tipsy-inner {
+	background-color: #000;
+	color: #FFF;
+	max-width: 200px;
+	padding: 5px 8px 4px 8px;
+	text-align: center;
+
+}
+/* Rounded corners */
+  .tipsy-inner {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+/* Uncomment for shadow */
+  /*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/ 
+  .tipsy-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	border: 5px dashed #000;
+}
+/* Rules to colour arrows */
+  .tipsy-arrow-n {
+	border-bottom-color: #000;
+}
+.tipsy-arrow-s {
+	border-top-color: #000;
+}
+.tipsy-arrow-e {
+	border-left-color: #000;
+}
+.tipsy-arrow-w {
+	border-right-color: #000;
+}
+.tipsy-n .tipsy-arrow {
+	top: 0px;
+	left: 50%;
+	margin-left: -5px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.tipsy-nw .tipsy-arrow {
+	top: 0;
+	left: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.tipsy-ne .tipsy-arrow {
+	top: 0;
+	right: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.tipsy-s .tipsy-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.tipsy-sw .tipsy-arrow {
+	bottom: 0;
+	left: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.tipsy-se .tipsy-arrow {
+	bottom: 0;
+	right: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.tipsy-e .tipsy-arrow {
+	right: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-left-style: solid;
+	border-right: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+}
+.tipsy-w .tipsy-arrow {
+	left: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-right-style: solid;
+	border-left: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+}
+
+/*City Pages*/
+.city-container {
+	width:560px;
+	height:460px;
+}
+.city-image {
+	width:560px;
+	height:460px;
+	background:url(../images/ankara-bg.jpg) no-repeat;
+}
+.city-title {
+	width: 85px;
+	height:30px;
+	background:url(../images/title-bg.png) no-repeat;
+	position:absolute;
+	z-index:2;
+	color:#fff;
+	font-size:2em;
+	padding:20px 10px;
+}
+.city-info {
+	width:410px;
+	height:410px;
+	background:url(../images/content-whitebg.png) repeat-x;
+	margin-left:-10px;
+	z-index:1;
+	position:absolute;
+	left:105px;
+	color:#fff;
+	padding:25px 20px;
+}
+.city-info p{
+	text-align: left;
 }
