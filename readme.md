@@ -1,7 +1,5 @@
 # Interactive Turkey Map
 
-Uses RafaelJs plugin **(implemented simple & dirty modalbox by tanerdogan) [See DEMO with modalbox](http://tanerdogan.com/github/map/) **
-
 
 TODO:
 - Mobile device support will be research
@@ -24,14 +22,15 @@ SUGGESTION:
 
 # Features (Will be add)
 I'm thinking add some feature to this project. Need time and ofcourse! energy for implement :p
+
 - Active/Passive city option (default)
 - Click event option (Redirect another page)
-- Modal box option
 - City and Region Map option (Maybe i'm not sure yet.)
 - With select box(or search box i don't know) option
 
-# Change Log - v0.5 2012/09/13
+# Change Log - v1.0 2015/08/11
 
+- Modal box option
 - Tooltip added (Just names showing for now)
 - Active region option added
 - Tooltip bug solved
