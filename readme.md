@@ -13,6 +13,7 @@ SUGGESTION:
 
 [See demo](http://selengora.com/test/harita)
 
+Note: Modalbox content does not work with file system, you need localhost or server.
 
 
 **jquery interactive Turkey Map, still in progress. Thanks..
