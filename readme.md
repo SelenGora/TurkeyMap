@@ -1,5 +1,7 @@
 # Interactive Turkey Map
 
+## --> This project is no longer in development.
+
 
 TODO:
 - Mobile device support will be research
