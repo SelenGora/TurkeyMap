@@ -11,7 +11,7 @@ SUGGESTION:
 - Clickable version
 
 
-[See demo](http://selengora.com/test/harita)
+[See demo](http://selengora.github.io/TurkeyMap/)
 
 Note: Modalbox content does not work with file system, you need localhost or server.
 
